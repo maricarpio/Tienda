@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<!-- Esta es la primera pag web del curso-->
 <html>
     <head>
+        <link rel="stylesheet" href="css/menu.css" type="text/css"/>
+
         <title>TechShop</title>
         <meta charset="UTF-8">
-        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="css/menu.css" type="text/css">
-
     </head>
-    <body> 
+    <body>
         <header class="header">
             <nav class="nav">
                 <a class ="logo nav-link" href="index.html">TechShop</a>
@@ -24,26 +22,17 @@
             </nav>
         </header>
         <section>
-            <h2>Nuestros productos</h2>
+            <header><h2>Ejemplos de videos</h2></header>
             <article>
-                <header>
-                  <h3>Producto 001</h3>  
-                </header>
-                <p>Quisque suspendisse inceptos facilisis mauris hendrerit ut malesuada varius 
-                elementum, mattis nunc convallis nostra erat orci montes mollis nascetur</p>
+                <header><h3>Torpedo</h3></header>
                 <figure>
-                    <img src="img/pexels-jamshed-ahmad-1316297.jpg" alt="marmota grande en el suelo" width="300"/>
-                    <figcaption>$25.000</figcaption>
+                    <video width="320" height="240" controls poster = "images/torpedo.jpg">
+                        <source src="../videos/torpedo.mp4" type="video/mp4">
+                        Su browser no soporta videos tipo <code>video</code>
+                    </video>
                 </figure>
-                <footer>
-                    <a href="agregarACarrito">Comprar</a>      
-                </footer>
+                <footer>Producción Belga</footer>
             </article>
         </section>
-        <footer>
-            <p>Sitio desarrollado por SEC 2022 &copy <a href="mailto:sec@gmail.com">Contactenos</a></p>
-        </footer>
-        <img src="img/pexels-jamshed-ahmad-1316297.jpg" alt="marmota grande en el suelo" width="300"/>
-        <img src="img/pexels-rafael-guajardo-4739057.jpg" alt="Imagen de un leopardo en un arbol" width="300"/>
     </body>
 </html>

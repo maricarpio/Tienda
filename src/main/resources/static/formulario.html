@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/menu.css" type="text/css"/>
+        <link rel="stylesheet" href="css/menu.css" type="text/css">
+
+
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a class ="logo nav-link" href="index.html">TechShop</a>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="index.html">TechShop</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="ejemplo5.html">&LeftTriangleBar;</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="ejemplo2.html">&RightTriangleBar;</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="audios.html">Audios</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="videos.html">Videos</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="iframes.html">iFrames</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="formularios.html">Forms</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <header><h2>Ejemplos de iframe</h2></header>
+            <article>
+                <header><h3>Ingrese la informacion</h3></header>
+                <form action="/cliente/ingresar" method="post">
+                    <input type="hidden" name="id" value="AB-450">
+                    <fieldset>
+                        <label>Nombre</label>
+                        <input type="text"
+                               name="nombre" 
+                               placeholder="Apellido1 Apellido2 Nombre"
+                               size="45">
+                    </fieldset>
+                    <input type="submit" value="enviar" name="enviar"/>
+                   <fieldset>
+                        <label>Edad</label>
+                        <input type="number"
+                               name="edad"
+                               min="18"
+                               max="65">
+                    </fieldset>
+                    <fieldset>
+                        <label>Aficionado a:</label>
+                        Anime <input type="checkbox"
+                               name="anime">
+                        Drama <input type="checkbox"
+                               name="drama">
+                        Comedia <input type="checkbox"
+                               name="comedia">
+                        Documental <input type="checkbox"
+                               name="documental">
+                    </fieldset>
+                    <fieldset>
+                        <label>Tipo de horario:</label>
+                        Presencial <input 
+                            type="radio"
+                            name="horario"
+                            value ="presencial">
+                        Virtual <input 
+                            type="radio"
+                            name="horario"
+                            value ="virtual">
+                        Online <input 
+                            type="radio"
+                            name="horario"
+                            value ="online">
+                        Bimodal <input 
+                            type="radio"
+                            name="horario"
+                            value ="bimodal">    
+                    </fieldset>
+                    <fieldset>
+                        
+                        <label>Fecha de cita</label>
+                        Dia: <input 
+                            type="date"
+                            name="dia"><br>
+                        Hora: <input 
+                            type="time"
+                            name="hora"><br>
+                    </fieldset> 
+                    <fieldset>
+                    <label>Clave de ingreso</label>
+                    Dia: <input type="password"
+                                name="clave">
+                    </fieldset>
+                    <input type="submit" value="enviar" name="enviar"/>
+                </form>
+                <footer><small>No distribuimos sus datos,confie...</small></footer>
+            </article>
+        </section>
+    </body>
+</html>
