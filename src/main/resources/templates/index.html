@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- Esta es la primera pag web del curso-->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
@@ -12,6 +13,8 @@
         <p>[[${saludo}]]</p>
         
         <h2>Datos de Clientes</h2>
+        <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
+        <div th:if="${clientes != null and !clientes.empty}">
         <table border="1">
             <thead>
                 <tr>
@@ -19,6 +22,8 @@
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Telefono</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +32,15 @@
                     <td>[[${cliente.apellidos}]]</td>
                     <td>[[${cliente.correo}]]</td>
                     <td>[[${cliente.telefono}]]</td>
+                    <td><a th:href="@{/cliente/actualiza/}+${cliente.idCliente}">Actualizar</a></td>
+                    <td><a th:href="@{/cliente/elimina/}+${cliente.idCliente}">Eliminar</a></td>
                 </tr>
             </tbody>
         </table>
+        </div>
+        <div th:if="${clientes == null and clientes.empty}">
+            <h3>No tenemos clientes que mostrar</h3>
+        </div>
     </body>
 </html>
                   
