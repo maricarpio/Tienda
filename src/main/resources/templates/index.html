@@ -8,6 +8,7 @@
 
     </head>
     <body> 
+        <header th:replace="layout/plantilla :: header"></header>
         <div>Saludos</div>
         <p th:text="${saludo}">Hola</p>
         <p>[[${saludo}]]</p>
@@ -41,6 +42,7 @@
         <div th:if="${clientes == null and clientes.empty}">
             <h3>No tenemos clientes que mostrar</h3>
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
                   
