@@ -18,7 +18,7 @@ public class Articulo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idArticulo;
-    private Long id_categoria;
+    private Long idCategoria;
     private String descripcion;
     private String detalle;
     private double precio;
@@ -28,8 +28,8 @@ public class Articulo implements Serializable{
     public Articulo() {
     }
 
-    public Articulo(Long id_categoria, String descripcion, String detalle, double precio, int existencias, boolean activo) {
-        this.id_categoria = id_categoria;
+    public Articulo(Long idCategoria, String descripcion, String detalle, double precio, int existencias, boolean activo) {
+        this.idCategoria = idCategoria;
         this.descripcion = descripcion;
         this.detalle = detalle;
         this.precio = precio;

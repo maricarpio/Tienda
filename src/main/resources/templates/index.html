@@ -4,8 +4,9 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" href="../static/css/menu.css" type="text/css">
     </head>
+    
     <body> 
         <header th:replace="layout/plantilla :: header"></header>
         <div class="contenido">
@@ -21,8 +22,8 @@
             </thead>
             <tbody>
                 <tr th:each="articulo: ${articulos}">
-                    <td>[[${articulo.descripcion}]]</td>
-                    <td>[[${articulo.precios}]]</td>
+                    <td> [[${articulo.descripcion}]]</td>
+                    <td style="text-align: right" th:text="${#numbers.formatDecimal(articulo.precio,3,2)}" ></td>                    <td>[[${articulo.precios}]]</td>
                     <td><a th:href="@{/carrito/comprar/}+${articulo.idArticulo}">Comprar</a></td>
                 </tr>
             </tbody>

@@ -1,6 +1,5 @@
 
 package com.tienda.service;
-
 import com.tienda.dao.ClienteDao;
 import com.tienda.dao.CreditoDao;
 import com.tienda.domain.Cliente;
@@ -11,12 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ClienteServiceImpl implements ClienteService {
+public class ClienteServiceImpl implements ClienteService{
     
     //Provoca que si el objeto ya esta en memoria se usa ese 
     //Si no esta en memoria se crea el objeto
     @Autowired
     private ClienteDao clienteDao;
+    
     @Autowired
     private CreditoDao creditoDao;
     
@@ -24,8 +24,14 @@ public class ClienteServiceImpl implements ClienteService {
     //Create read update and delete
     @Override
     @Transactional(readOnly = true)
-    public List<Cliente>getClientes(){
-        return (List<Cliente>)clienteDao.findAll();
+    public List<Cliente> getClientesPorApellidos(String apellidos) {
+        return (List<Cliente>) clienteDao.findByApellidos(apellidos);
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Cliente> getClientes() {
+        return (List<Cliente>) clienteDao.findAll();
     }
     
     @Override
@@ -33,6 +39,7 @@ public class ClienteServiceImpl implements ClienteService {
     public Cliente getCliente(Cliente cliente){
         return clienteDao.findById(cliente.getIdCliente()).orElse(null);
     }
+    
     @Override
     @Transactional
     public void save(Cliente cliente){
@@ -50,5 +57,7 @@ public class ClienteServiceImpl implements ClienteService {
     public void delete(Cliente cliente){
         clienteDao.delete(cliente);
     }
-    
+
 }
+    
+

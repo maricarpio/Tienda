@@ -11,6 +11,8 @@ public interface ClienteService {
     
     public List<Cliente>getClientes();
     
+    public List<Cliente>getClientesPorApellidos(String apellidos);
+    
     public Cliente getCliente(Cliente cliente);
     
     public void save(Cliente cliente);
