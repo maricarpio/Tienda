@@ -1,41 +1,53 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html 
+    xmlns:th="http://WWW.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header"></header>
+        <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2>Listado de Clientes</h2>
-            <a th:href="@{/articulo/nuevo">Nuevo Articulo<a/>
-            <div th:if="${articulos != null and !articulos.empty}">
+        <br>
+        <h2> Datos de Articulos </h2>
+        <br>
+        <a th:href="@{/articulo/nuevo}">Nuevo articulo</a>
+
+        <div th:if="${articulos != null and !articulos.empty}" ><!-- esto es como un bloque -->
+            <br>
             <table border="1">
-            <thead>
-                <tr>
-                    <th>Descripcion</th>
-                    <th>Precios</th>
-                    <th>Existencias</th>
-                    <th>Activa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="articulo: ${articulos}">
-                    <td th:text="${articulo.descripcion}"></td>
-                    <td th:text="${#numbres.formatDecimal(articulo.precio,3,2)}" style="text-align: right" ></td>
-                    <td th:text="${articulo.existencias}" style="text-align: center" ></td>
-                    <td><input type = "checkbox" name="actva" th:checked="${articulo.activo" disabled="true"></td>
-                    <td><a th:href="@{/articuo/eliminar/}+${articulo.idArticulo}">Eliminar</a></td>
-                    <td><a th:href="@{/carrito/modificar/}+${articulo.idArticulo}">Modificar</a></td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Detalle</th>
+                        <th>Precio</th>
+                        <th>Existencias</th>
+                        <th>Activo</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="articulo:${articulos}">
+                        <td>[[${articulo.descripcion}]]</td>
+                        <td>[[${articulo.detalle}]]</td>
+                        <td style="text-align: right">[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
+                        <td style="text-align: center">[[${articulo.existencias}]]</td>
+                        <td><input type="checkbox" name="activo" th:checked="${articulo.activo}" disabled="true"></td>
+                        
+                        <td><a th:href="@{/articulo/elimina/} + ${articulo.idArticulo}" >Elimina</a></td>
+                        <td><a th:href="@{/articulo/actualiza/} + ${articulo.idArticulo}" >Actualiza</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
         <div th:if="${articulos == null or articulos.empty}">
-            <h3>No tenemos articulos que mostrar...</h3>
+            <h3>No tenemos articulos que mostrar</h3>   
         </div>
-    </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        
+      </div>
+        <footer th:replace="layout/plantilla :: footer">
     </body>
-</html>         
+</html>        

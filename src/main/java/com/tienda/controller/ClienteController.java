@@ -1,6 +1,4 @@
-
 package com.tienda.controller;
-
 import com.tienda.domain.Cliente;
 import com.tienda.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,44 +7,44 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+
 @Controller
 public class ClienteController {
-    //Provoca que el objeto se cree si no existe o se use el que no exites...no hace mas de 1 objeto
-    //Esto se conoce como inyeccion de dependencias...
-    
-    
+   //provaca que el objeto se cree si no existe o se use el que exista.... no hace más de 1 objeto
+    //Esto se conoce como inyección de dependecias...
     @Autowired
     private ClienteService clienteService;
     
     @GetMapping("/cliente/listado")
-    public String inicio (Model model){
+    public String inicio(Model model){
         var clientes = clienteService.getClientes();
-        //var clientes = clienteService.getClientesPorApellidos("Contreras Mora");
-        model.addAttribute("clientes",clientes);
+        model.addAttribute("clientes", clientes);
         return "/cliente/listado";
-    }
     
-    @GetMapping("/cliente/nuevo")
-    public String clienteNuevo(Cliente cliente){
-        return "/cliente/modificar";
     }
-    
-    @PostMapping("/cliente/guardar")
-    public String clienteGuardar(Cliente cliente){
+   @GetMapping("/cliente/nuevo")
+    public String clienteNuevo(Cliente cliente) {
+        return "/cliente/modificar";//esto llama al html del folder templates.cliente
+    }
+   @PostMapping("/cliente/guardar")
+    public String clienteGuardar(Cliente cliente) {
         clienteService.save(cliente);
-        return "redirect:/cliente/listado";
+        return "redirect:/cliente/listado";//esto llama al html del folder templates.cliente
     }
-    
-    @GetMapping("/cliente/actualiza/{idCliente}")
-    public String clienteActualizar(Cliente cliente,Model model){
+   @GetMapping("/cliente/actualiza/{idCliente}")
+    public String clienteActualiza(Cliente cliente, Model model) {
         cliente = clienteService.getCliente(cliente);
         model.addAttribute("cliente",cliente);
         return "/cliente/modificar";
     }
     
     @GetMapping("/cliente/elimina/{idCliente}")
-    public String clienteElimina(Cliente cliente){
+    public String clienteElimina(Cliente cliente) {
         clienteService.delete(cliente);
         return "redirect:/cliente/listado";
     }
+
+
+
 }

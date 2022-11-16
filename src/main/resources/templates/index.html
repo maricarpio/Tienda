@@ -1,39 +1,45 @@
-
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html 
+    xmlns:th="http://WWW.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
-            <link rel="stylesheet" href="../static/css/menu.css" type="text/css">
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
-    
-    <body> 
-        <header th:replace="layout/plantilla :: header"></header>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <a href="layout/plantilla.html"></a>
         <div class="contenido">
-            <h2>Nuestros Articulos</h2>
-            <div th:if="${articulos != null and !articulos.empty}">
+        <br>
+        <h2> Nuestros Articulos</h2>
+        <br>
+
+        <div th:if="${articulos != null and !articulos.empty}" ><!-- esto es como un bloque -->
             <table border="1">
-            <thead>
-                <tr>
-                    <th>Descripcion</th>
-                    <th>Precios</th>
-                    <th>Comprar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="articulo: ${articulos}">
-                    <td> [[${articulo.descripcion}]]</td>
-                    <td style="text-align: right" th:text="${#numbers.formatDecimal(articulo.precio,3,2)}" ></td>                    <td>[[${articulo.precios}]]</td>
-                    <td><a th:href="@{/carrito/comprar/}+${articulo.idArticulo}">Comprar</a></td>
-                </tr>
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Comprar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="articulo:${articulos}">
+                        <td>[[${articulo.descripcion}]]</td>
+                        <td>[[${articulo.precio}]]</td>
+                        
+                        <td><a th:href="@{/carrito/comprar/} + ${articulo.idArticulo}" >Comprar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+            <div th:if="${articulos == null or articulos.empty}">
+            <h3>No tenemos articulos que mostrar</h3>   
         </div>
-        <div th:if="${articulos == null and articulos.empty}">
-            <h3>No tenemos articulos que mostrar</h3>
+        
         </div>
-    </div>
-        <footer th:replace="layout/plantilla :: footer"/>
+        <footer th:replace="layout/plantilla :: footer">
     </body>
 </html>
                   

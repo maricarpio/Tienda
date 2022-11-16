@@ -38,5 +38,7 @@ public class Cliente implements Serializable{
     }
 
     public Cliente() {
+
     } 
 }
+    
