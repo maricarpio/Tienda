@@ -1,27 +1,25 @@
 <html 
     xmlns:th="http://WWW.thymeleaf.org"
     xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/org/extras/spring-security"
     >
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <a href="layout/plantilla.html"></a>
         <div class="contenido">
         <br>
-        <h2> Nuestros Articulos</h2>
-        <br>
-
+        <h2> [[#{index.titulo}]]</h2>
         <div th:if="${articulos != null and !articulos.empty}" ><!-- esto es como un bloque -->
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Comprar</th>
+                        <th>[[#{articulo.descripcion}]]</th>
+                        <th>[[#{articulo.precio}]]</th>
+                        <th>[[#{articulo.comprar}]]</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,17 +27,17 @@
                         <td>[[${articulo.descripcion}]]</td>
                         <td>[[${articulo.precio}]]</td>
                         
-                        <td><a th:href="@{/carrito/comprar/} + ${articulo.idArticulo}" >Comprar</a></td>
+                        <td><a th:href="@{/carrito/comprar/} + ${articulo.idArticulo}" >[[#{articulo.comprar}]]</a></td>
                     </tr>
                 </tbody>
             </table>
         </div> 
             <div th:if="${articulos == null or articulos.empty}">
-            <h3>No tenemos articulos que mostrar</h3>   
+            <h3>[[#{articulo.no_mostrar}]]</h3>   
         </div>
         
         </div>
-        <footer th:replace="layout/plantilla :: footer">
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
                   

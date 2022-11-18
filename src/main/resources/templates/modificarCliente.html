@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<!-- Esta es la primera pag web del curso-->
-<html xmlns:th="http://www.thymeleaf.org"
-       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html 
+    xmlns:th="http://WWW.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/org/extras/spring-security"
+    >
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-
+        <meta charset="UTF-8"/>
     </head>
     <body> 
-        <header th:replace="layout/plantilla :: header"/>
-        <div>Saludos</div>
-        <p th:text="${saludo}">Hola</p>
-        <p>[[${saludo}]]</p>
-        
+        <header th:replace="layout/plantilla :: header"/>        
         <h2>Datos de Cliente</h2>
         <a th:href="@{/}">Regresar</a>
         <hr/>

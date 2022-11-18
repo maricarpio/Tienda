@@ -1,19 +1,20 @@
 <html 
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+    xmlns:th="http://WWW.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/org/extras/spring-security"
+    >
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
         <br>
 
-        <h2>Datos de Categoria</h2>
+        <h2>[[#{categoria.titulo}]]</h2>
         <br>
-        <a th:href="@{/categoria/listado}">Regresar</a>
+        <a th:href="@{/categoria/listado}">[[#{accion.regresar}]]</a>
         <br>
         <form th:action="@{/categoria/guardar}"
               method="post"
@@ -23,7 +24,7 @@
             <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
             
             <fieldset>
-                <label for="descripcion">Descripción:</label>
+                <label for="descripcion">[[#{categoria.descripcion}]]</label>
                 <input type="text" name="descripcion" 
                        required="true"
                        placeholder="Descripcion"
@@ -31,7 +32,7 @@
             </fieldset>
             
             <fieldset>
-                <label for="activo">Activo:</label>
+                <label for="activo">[[#{categoria.activo}]]</label>
                 <input type="checkbox" name="activo" 
                        th:field="*{activo}"/>
             </fieldset>
@@ -41,6 +42,6 @@
         </form>
         
         </div>
-        <footer th:replace="layout/plantilla :: footer">
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
