@@ -13,6 +13,7 @@
             <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
             <div class="row row-cols-3" th:if="${articulos != null and !articulos.empty}">
                 <div class="card" th:each="articulo : ${articulos}" >
+                    <img src="/images/equipo.jpg" class="card-img-top" alt="equipo"/>
                <!--     <img src="/images/equipo1.jpg" class="card-img-top" alt="equipo">  -->
                     <div class="card-body">   
                         <h5 class="card-title">[[${articulo.descripcion}]]</h5>

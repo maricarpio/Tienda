@@ -4,21 +4,26 @@
  */
 package com.tienda;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
+    @Autowired
+    private UserDetailsService userDetailsService;
     //Este metodo permite la autenticacion de usuario.. usuarios en memoria
     
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
+        /*auth.inMemoryAuthentication()
                 .withUser("Juan")
                 .password("{noop}123")
                 .roles("ADMIN","VENDEDOR","USER")
@@ -29,7 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .withUser("Pedro")
                 .password("{noop}789")
-                .roles("USER");           
+                .roles("USER"); */
+        auth
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(new BCryptPasswordEncoder());
     }
     
     //Este metodo permite la autorizacion a los recursos del sitio web
@@ -50,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                                 "/articulo/listado")
                 .hasAnyRole("ADMIN","VENDEDOR")
                 .antMatchers("/")
-                .hasAnyRole("ADMIN","VENDEDOR","USER")
+                .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
